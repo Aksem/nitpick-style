@@ -1,0 +1,53 @@
+[nitpick.styles]
+include = ["github://andreoliwa/nitpick@v0.32.0/nitpick-style.toml"]
+
+["pyproject.toml".tool.poetry.dev-dependencies]
+black = "^22.3"
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+pytest-mock = "^3.7.0"
+isort = "^5.9.3"
+mypy = "^0.910"
+flake8 = "^3.9.2"
+flake8-docstrings = "^1.6.0"
+darglint = "^1.8.0"
+flake8-bugbear = "^21.4.3"
+flake8-comprehensions = "^3.6.1"
+bandit = "^1.7.0"
+safety = "^1.10.3"
+
+["pyproject.toml".tool.black]
+target-version = ['py38', 'py39', 'py310']
+--preview="yes"
+exclude = '''
+(
+    asv_bench/env
+  | \.egg
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.nox
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | setup.py
+)
+'''
+
+["pyproject.toml".tool.isort]
+profile = "black"
+
+["pyproject.toml".tool.mypy]
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+show_error_codes = true
+warn_unused_ignores = true
+
+[["pyproject.toml".tool.mypy.overrides]]
+ignore_missing_imports = true
